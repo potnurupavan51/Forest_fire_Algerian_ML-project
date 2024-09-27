@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .background-image {
+            background-image: url("https://cdn.pixabay.com/photo/2014/09/01/14/39/forest-fire-432870_1280.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        .content {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .content h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .content form {
+            margin-bottom: 20px;
+        }
+        
+        .content form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: none;
+        }
+        
+        .content form label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .content button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .content button:hover {
+            background-color: #0056b3;
+        }
+        
+        .content h2 {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image">
+        <div class="content">
+            <h1>FWI Prediction</h1>
+            <form action="{{ url_for('predict_datapoint')}}" method="post">
+                <label for="Temperature">Temperature</label>
+                <input type="text" name="Temperature" id="Temperature" placeholder="Temperature" required="required" /><br>
+                
+                <label for="RH">Relative Humidity</label>
+                <input type="text" name="RH" id="RH" placeholder="RH" required="required" /><br>
+                
+                <label for="Ws">Wind Speed</label>
+                <input type="text" name="Ws" id="Ws" placeholder="Ws" required="required" /><br>
+                
+                <label for="Rain">Rain</label>
+                <input type="text" name="Rain" id="Rain" placeholder="Rain" required="required" /><br>
+                
+                <label for="FFMC">Fuel Moisture Code</label>
+                <input type="text" name="FFMC" id="FFMC" placeholder="FFMC" required="required" /><br>
+                
+                <label for="DMC">Duff Moisture Code</label>
+                <input type="text" name="DMC" id="DMC" placeholder="DMC" required="required" /><br>
+                
+                <label for="ISI">Initial Spread Index</label>
+                <input type="text" name="ISI" id="ISI" placeholder="ISI" required="required" /><br>
+                
+                <label for="Classes">Classes</label>
+                <input type="text" name="Classes" id="Classes" placeholder="Classes" required="required" /><br>
+                
+                <label for="Region">Region</label>
+                <input type="text" name="Region" id="Region" placeholder="Region" required="required" /><br>
+                
+                <button type="submit">Predict</button>
+            </form>
+            <h2>
+                The FWI prediction is :- {{result}}
+            </h2>
+        </div>
+    </div>
+</body>
+</html>
